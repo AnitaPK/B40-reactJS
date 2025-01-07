@@ -1,0 +1,29 @@
+import "./App.css"
+import GreetingFromClass from "./components/GreetingFromClass"
+import Greetings from "./components/Greetings"
+import Virat from "./components/Virat"
+import Button from './components/Button'
+
+
+
+function App() {
+  
+  return (
+    <>
+    <GreetingFromClass />
+      <h1 style={{color:"red", backgroundColor:"#000"}}>Hello world now im in ReactJS With B40 with excitment</h1>
+      
+      <p className="paraClassOne">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam sapiente repellat nulla nihil fugit culpa dolor eum error deleniti est.</p>
+      <Greetings name1="Anushka" name2="Kadu"/>
+      <Greetings name1="Maithily" name2="Shinde" />
+
+      <Greetings name1="Kajal" name2="Kadlag" />
+
+      <Virat user1={{name1:"Virat kohli",age:35}} />
+      <Button nameButton={["Anushka","Maithily", "Kajal"]} />
+
+    </>
+  )
+}
+
+export default App

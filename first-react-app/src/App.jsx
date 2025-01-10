@@ -3,6 +3,9 @@ import GreetingFromClass from "./components/GreetingFromClass"
 import Greetings from "./components/Greetings"
 import Virat from "./components/Virat"
 import Button from './components/Button'
+import LifeCycle from "./components/LifeCycle"
+import Navbar from "./components/Navbar/Navbar"
+import Counter from "./components/Counter"
 
 
 
@@ -10,7 +13,10 @@ function App() {
   
   return (
     <>
-    <GreetingFromClass />
+    <Counter />
+    <Navbar />
+    <LifeCycle />
+    <GreetingFromClass name1={{fname:"Girish", lname:"Jagtap"}} />
       <h1 style={{color:"red", backgroundColor:"#000"}}>Hello world now im in ReactJS With B40 with excitment</h1>
       
       <p className="paraClassOne">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam sapiente repellat nulla nihil fugit culpa dolor eum error deleniti est.</p>

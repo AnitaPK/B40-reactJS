@@ -1,7 +1,7 @@
-button{
+/* button{
     background-color: black;
     color: aliceblue;
-}
+} */
 
 button:hover{
     color: red;

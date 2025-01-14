@@ -2,8 +2,13 @@ import React from "react";
 import "./LoginPage.css";
 import loginImage from "../assets/loginImage.jpg";
 import { useState } from "react";
+import {ToastContainer, toast} from "react-toastify"
 
-const LoginPage = () => {
+const LoginPage = ({isLogin, setIsLogin}) => {
+
+  console.log(isLogin, setIsLogin);
+
+
 //   const [formData, SetFormData] = useState({email:"", password:""});
 const [email,setEmail] = useState("");
 const [password, setPassword] = useState("")
@@ -17,12 +22,22 @@ const getFormValues = (event) =>{
 const SubmitFormData = (e) =>{
     e.preventDefault();
     console.log("**********")
-    // setEmail()
+    if(email=="a@gmail.com" && password=="123"){
+    toast.success("Form Submitted")
+    setIsLogin(isLogin = true)
+    console.log("for true condition",isLogin);
+
+    }else{
+      toast.error('Enter correct values')
+      setIsLogin(false)
+      console.log("For false condition",isLogin);
+    }
 }
 
 
   return (
     <>
+   
     <div className="sizeDiv gradImage">
       <div className="row">
         <div className="col">
@@ -79,6 +94,7 @@ const SubmitFormData = (e) =>{
         <h3>Email: <span>{email}</span></h3>
         <h3>Password: <span>{password}</span></h3>
     </div>
+    <ToastContainer position="bottom-right"/>
     </>
   );
 };

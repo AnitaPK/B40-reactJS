@@ -6,6 +6,8 @@ import Button from './components/Button'
 import LifeCycle from "./components/LifeCycle"
 import Navbar from "./components/Navbar/Navbar"
 import Counter from "./components/Counter"
+import Calculator from "./components/Calculator"
+import ConditionMessage from "./components/ConditionMessage"
 
 
 
@@ -13,6 +15,10 @@ function App() {
   
   return (
     <>
+    <ConditionMessage />
+    <div style={{padding:"10px"}}>
+    <Calculator />
+    </div>
     <Counter />
     <Navbar />
     <LifeCycle />

@@ -8,14 +8,41 @@ import Navbar from "./components/Navbar/Navbar"
 import Counter from "./components/Counter"
 import Calculator from "./components/Calculator"
 import ConditionMessage from "./components/ConditionMessage"
-
-
+import AllFiles from "./ToDoList/AllFiles"
+import { useEffect } from "react"
+import { useState } from "react"
+import ProjectFetch from "./fetchProjectList/ProjectFetch"
+import AjeetWithQuote from './fetchProjectList/FetchThroughAxios'
 
 function App() {
-  
+  const [list1,setList1] = useState(['orange'])
+  const [list2,setList2] = useState(['apple', 'mango'])
+
+  function getfruits(){
+    // setList1([list1.concat(list2)])
+    setList1([...list1, ...list2])
+    // setList1([...list1,'banana'])
+  }
+  useEffect(()=>{
+    // console.log("Hello0000")
+    getfruits();
+    console.log("list of fruits in useEffect",list1);
+  },[])
+  // useEffect(()=>{},[])
+
+  console.log("list of fruits after useEffect",list1);
+
   return (
     <>
-    <ConditionMessage />
+<AjeetWithQuote />
+    <AllFiles />
+    <ul>
+      {list1.map((fruit, index)=>(
+        <li key={index}>{fruit}</li>
+      ))}
+    </ul>
+    <ProjectFetch />
+    {/* <ConditionMessage />
     <div style={{padding:"10px"}}>
     <Calculator />
     </div>
@@ -32,7 +59,7 @@ function App() {
       <Greetings name1="Kajal" name2="Kadlag" />
 
       <Virat user1={{name1:"Virat kohli",age:35}} />
-      <Button nameButton={["Anushka","Maithily", "Kajal"]} />
+      <Button nameButton={["Anushka","Maithily", "Kajal"]} /> */}
 
     </>
   )

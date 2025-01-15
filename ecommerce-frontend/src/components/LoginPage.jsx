@@ -90,10 +90,10 @@ const SubmitFormData = (e) =>{
         </div>
       </div>
     </div>
-    <div>
+    {/* <div>
         <h3>Email: <span>{email}</span></h3>
         <h3>Password: <span>{password}</span></h3>
-    </div>
+    </div> */}
     <ToastContainer position="bottom-right"/>
     </>
   );

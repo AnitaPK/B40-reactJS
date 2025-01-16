@@ -3,51 +3,21 @@ import "./LoginPage.css";
 import loginImage from "../assets/loginImage.jpg";
 import { useState } from "react";
 import {ToastContainer, toast} from "react-toastify"
-import { useEffect } from "react";
 
-const LoginPage = ({isLogin, setIsLogin}) => {
-
-  console.log(isLogin, setIsLogin);
+const RegisterPage = () => {
 
 
-//   const [formData, SetFormData] = useState({email:"", password:""});
 const [email,setEmail] = useState("");
 const [password, setPassword] = useState("")
-// console.log("email",email)
-// console.log("Password",password)
-const getFormValues = (event) =>{
+const SubmitFormData = (event) =>{
     event.preventDefault();
-    console.log("**************",email,password)
+    console.log("******Register********",email,password)
+    const payload ={email:email,password:password}
+    localStorage.setItem('user1',JSON.stringify(payload))
 }
-const getData = localStorage.getItem('user1')
-console.log(getData);
-console.log(typeof(getData));
-const dataOne = JSON.parse(getData);
-console.log(" &&&&&& ",typeof(dataOne));
-
-// const [data,setData] = useState({});
-// setData(dataOne);
-// console.log("*****Data in Login component********",data)
-
-const SubmitFormData = (e) =>{
-    e.preventDefault();
-    console.log("**********")
-    if(email==dataOne.email && password==dataOne.password){
-    toast.success("Form Submitted")
-    setIsLogin(isLogin = true)
-    console.log("for true condition",isLogin);
-
-    }else{
-      toast.error('Enter correct values')
-      setIsLogin(false)
-      console.log("For false condition",isLogin);
-    }
-}
-
 
   return (
-    <>
-   
+    <> 
     <div className="sizeDiv gradImage">
       <div className="row">
         <div className="col">
@@ -55,7 +25,7 @@ const SubmitFormData = (e) =>{
         </div>
         <div className="col">
           <form className="mt-5 p-5" onSubmit={SubmitFormData}>
-            <h3>Login Here</h3>
+          <h3>Register Here</h3>
             <div className="mb-3">
               <label for="exampleInputEmail1" className="form-label">
                 Email address
@@ -94,7 +64,7 @@ const SubmitFormData = (e) =>{
               </label>
             </div>
             <button type="submit" className="btn btn-primary ">
-              Login
+              Register
             </button>
             {/* <button onClick={getFormValues}>Check Values</button> */}
           </form>
@@ -110,4 +80,4 @@ const SubmitFormData = (e) =>{
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

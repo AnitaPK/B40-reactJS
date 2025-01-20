@@ -4,10 +4,12 @@ import loginImage from "../assets/loginImage.jpg";
 import { useState } from "react";
 import {ToastContainer, toast} from "react-toastify"
 import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage = ({isLogin, setIsLogin}) => {
 
   console.log(isLogin, setIsLogin);
+  const navigate = useNavigate();
 
 
 //   const [formData, SetFormData] = useState({email:"", password:""});
@@ -36,11 +38,13 @@ const SubmitFormData = (e) =>{
     toast.success("Form Submitted")
     setIsLogin(isLogin = true)
     console.log("for true condition",isLogin);
+      navigate('home-page')
 
     }else{
       toast.error('Enter correct values')
       setIsLogin(false)
       console.log("For false condition",isLogin);
+      navigate('/')
     }
 }
 
@@ -96,6 +100,7 @@ const SubmitFormData = (e) =>{
             <button type="submit" className="btn btn-primary ">
               Login
             </button>
+            <Link to='register'>If not Registered</Link>
             {/* <button onClick={getFormValues}>Check Values</button> */}
           </form>
         </div>

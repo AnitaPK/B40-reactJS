@@ -13,6 +13,10 @@ import { useEffect } from "react"
 import { useState } from "react"
 import ProjectFetch from "./fetchProjectList/ProjectFetch"
 import AjeetWithQuote from './fetchProjectList/FetchThroughAxios'
+import Timer from "./components/TimeOne"
+import InputRefCompo from "./components/InputRefCompo"
+import ProductList from "./customHook/ProductList"
+import QuotesComponent from "./customHook/QuotesComponent"
 
 function App() {
   const [list1,setList1] = useState(['orange'])
@@ -34,7 +38,11 @@ function App() {
 
   return (
     <>
-<AjeetWithQuote />
+    <QuotesComponent />
+    {/* <ProductList /> */}
+    <Timer />
+    <InputRefCompo />
+{/* <AjeetWithQuote /> */}
     <AllFiles />
     <ul>
       {list1.map((fruit, index)=>(

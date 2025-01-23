@@ -4,7 +4,6 @@ import { ToastContainer, toast } from 'react-toastify'
 
 
 const content = ({products}) => {
-  
     
  
   return (

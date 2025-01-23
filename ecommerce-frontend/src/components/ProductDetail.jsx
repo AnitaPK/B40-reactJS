@@ -27,8 +27,9 @@ const ProductDetail = ({products}) => {
         <img src={prod.Img} className='img-fluid'/>
       </div>
       <p className='text-center'>Price:{prod.Price}</p>
-      <Link to='review' className='m-2'>Show Review</Link>
-      <Link to='rating'>Rating</Link>
+      <Link to={`/home-page/${prod.id}/review`} className='m-2'>Show Review</Link>
+      
+      <Link to={`/home-page/${prod.id}/rating`}>Rating</Link>
     </div>
     <Routes>
         <Route path='review' element={<Review />} ></Route>

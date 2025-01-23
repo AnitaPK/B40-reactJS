@@ -1,9 +1,7 @@
-import React from "react";
+import React,{useState,useEffect,useRef} from "react";
 import "./LoginPage.css";
 import loginImage from "../assets/loginImage.jpg";
-import { useState } from "react";
 import {ToastContainer, toast} from "react-toastify"
-import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage = ({isLogin, setIsLogin}) => {
@@ -11,6 +9,13 @@ const LoginPage = ({isLogin, setIsLogin}) => {
   console.log(isLogin, setIsLogin);
   const navigate = useNavigate();
 
+  const inputRef = useRef(null)
+
+  useEffect(()=>{
+    if(inputRef.current){
+    inputRef.current.focus();
+    }
+  },[])
 
 //   const [formData, SetFormData] = useState({email:"", password:""});
 const [email,setEmail] = useState("");
@@ -72,6 +77,7 @@ const SubmitFormData = (e) =>{
                 value={email}
                 // onChange={(e)=>setEmail(e.target.value)}
                 onChange={(e)=>setEmail(e.target.value)}
+                ref={inputRef}
               />
             </div>
             <div className="mb-3">

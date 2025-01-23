@@ -3,7 +3,7 @@ import "./LoginPage.css";
 import loginImage from "../assets/loginImage.jpg";
 import { useState } from "react";
 import {ToastContainer, toast} from "react-toastify"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
 
@@ -71,6 +71,7 @@ const SubmitFormData = (event) =>{
               Register
             </button>
             {/* <button onClick={getFormValues}>Check Values</button> */}
+            <Link to='/'>If Allready registered</Link>
           </form>
         </div>
       </div>

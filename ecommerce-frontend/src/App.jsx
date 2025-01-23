@@ -57,9 +57,9 @@ function App() {
 
     <Routes>
       <Route path='/' element={<LoginPage isLogin={isLogin} setIsLogin={setIsLogin} />}></Route>
-      <Route path='register' element={<RegisterPage />}> </Route>
-      <Route path='home-page' element={<LayOut isLogin={isLogin} setIsLogin={setIsLogin} products={products}/>} />
-      <Route path='home-page/:ID/*' element={<ProductDetail products={products} />} ></Route>
+      <Route path='/register' element={<RegisterPage />}> </Route>
+      <Route path='/home-page' element={<LayOut isLogin={isLogin} setIsLogin={setIsLogin} products={products}/>} />
+      <Route path='/home-page/:ID/*' element={<ProductDetail products={products} />} ></Route>
 
     </Routes>
 

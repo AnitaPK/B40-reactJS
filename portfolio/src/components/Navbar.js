@@ -1,7 +1,10 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import UserContext from '../App'
 
 const Navbar = () => {
+    const {user} = useContext(UserContext)
+    // console.log(user.name);
     return (
       <>
         <div>
@@ -25,30 +28,7 @@ const Navbar = () => {
       <button onClick={handlePageTwo}>PageTwo</button> */}
       <Link to='/' >Page One</Link>
       <Link to='/page-two'>Go to page Two</Link>
-              <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
-                  <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="/">
-                      Home
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/">
-                      Features
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/">
-                      Pricing
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link disabled" aria-disabled="true">
-                      Disabled
-                    </a>
-                  </li>
-                </ul>
-              </div>
+            
             </div>
           </nav>
         </div>

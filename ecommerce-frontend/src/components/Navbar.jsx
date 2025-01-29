@@ -1,6 +1,15 @@
 import React from 'react'
+import { useContext } from 'react'
+import { ThemeContext } from '../themeContext/ThemeContext'
+import { CartContext } from '../pages/cartContext/CartContext'
+import { Link } from 'react-router-dom'
+
 
 const Navbar = ({isLogin, setIsLogin}) => {
+
+  const {theme,toggleTheme} = useContext(ThemeContext)
+  console.log(theme);
+const {cartLength} = useContext(CartContext)
 
 function handleLogout(){
     setIsLogin(isLogin=false)
@@ -8,7 +17,7 @@ function handleLogout(){
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className={`navbar navbar-expand-lg ${theme=='light' ? 'navbar-light bg-light' : 'navbar-dark bg-dark'}`}>
   <a className="navbar-brand" href="#">Navbar</a>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
@@ -35,6 +44,11 @@ function handleLogout(){
       </li>
 
     </ul>
+    <button onClick={toggleTheme}>ChangeTheme</button>
+    <Link to='/home-page/cart' >Cart
+    <sup>{cartLength}</sup>
+    </Link>
+
     <form className="form-inline my-2 my-lg-0">
       <button className='btn btn-primary my-2 my-sm-0' onClick={handleLogout}>Logout</button>
       <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />

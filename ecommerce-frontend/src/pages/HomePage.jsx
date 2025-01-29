@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
+import { CartContext } from './cartContext/CartContext'
+
 
 
 const content = ({products}) => {
-    
+    const {addToCart,cart,setCart} = useContext(CartContext);
+
  
   return (
     <>
@@ -16,7 +19,7 @@ const content = ({products}) => {
             <div class="p-2 text-black ">
             <h3 >{product.Name1}</h3>
              <h5>₹{product.Price}</h5>
-             <button class="btn btn-primary" >Add To Cart</button>
+             <button class="btn btn-primary" onClick={()=>setCart([...cart,product])}>Add To Cart</button>
              <Link to={`/home-page/${product.id}`} type='button' className='btn btn-success' product={product}>View more</Link>
             </div>
             </div>

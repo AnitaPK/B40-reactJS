@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -9,6 +9,11 @@ import RegisterPage from "./components/RegisterPage";
 import { Route, Routes } from "react-router-dom";
 import LayOut from "./pages/LayOut";
 import ProductDetail from "./components/ProductDetail";
+import ThemeProvider from "./themeContext/ThemeContext";
+import { CartProvider } from "./pages/cartContext/CartContext";
+import Cart from "./components/Cart";
+import CartFromReducer from "./pages/cartReducer/CartComponentReducer";
+import { cartReducer, initialState } from "./pages/cartReducer/cartReducer";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -52,19 +57,48 @@ function App() {
     },
   ]);
 
+  const [state, dispatch] = useReducer(cartReducer, initialState);
+
   return (
     <>
+      <ThemeProvider>
+        <CartProvider>
+          <Routes>
+            <Route
+              path="/"
+              element={<LoginPage isLogin={isLogin} setIsLogin={setIsLogin} />}
+            ></Route>
+            <Route path="/register" element={<RegisterPage />}>
+              {" "}
+            </Route>
+            <Route
+              path="/home-page"
+              element={
+                <LayOut
+                  isLogin={isLogin}
+                  setIsLogin={setIsLogin}
+                  products={products}
+                  dispatch={dispatch}
+                  cartState={state}
+                />
+              }
+            />
+            <Route
+              path="/home-page/:ID/*"
+              element={<ProductDetail products={products} />}
+            ></Route>
+            <Route path="/home-page/cart" element={<Cart />}></Route>
+            <Route
+              path="/home-page/cartReducer"
+              element={
+                <CartFromReducer cartState={state} dispatch={dispatch} />
+              }
+            ></Route>
+          </Routes>
+        </CartProvider>
+      </ThemeProvider>
 
-    <Routes>
-      <Route path='/' element={<LoginPage isLogin={isLogin} setIsLogin={setIsLogin} />}></Route>
-      <Route path='/register' element={<RegisterPage />}> </Route>
-      <Route path='/home-page' element={<LayOut isLogin={isLogin} setIsLogin={setIsLogin} products={products}/>} />
-      <Route path='/home-page/:ID/*' element={<ProductDetail products={products} />} ></Route>
-
-    </Routes>
-
-
-    {/* <RegisterPage />
+      {/* <RegisterPage />
       {isLogin ? (
         <>
           <Navbar isLogin={isLogin} setIsLogin={setIsLogin}/>

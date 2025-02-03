@@ -17,6 +17,7 @@ import Timer from "./components/TimeOne"
 import InputRefCompo from "./components/InputRefCompo"
 import ProductList from "./customHook/ProductList"
 import QuotesComponent from "./customHook/QuotesComponent"
+import CoinComponent from "./useReducerCoin/CoinComponent"
 
 function App() {
   const [list1,setList1] = useState(['orange'])
@@ -38,7 +39,8 @@ function App() {
 
   return (
     <>
-    <QuotesComponent />
+    <CoinComponent />
+    {/* <QuotesComponent /> */}
     {/* <ProductList /> */}
     <Timer />
     <InputRefCompo />

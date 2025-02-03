@@ -2,11 +2,11 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import HomePage from './HomePage'
 
-const LayOut = ({isLogin, setIsLogin, products}) => {
+const LayOut = ({isLogin, setIsLogin, products, dispatch, cartState}) => {
   return (
     <>
-      <Navbar isLogin={isLogin} setIsLogin={setIsLogin}/>
-      <HomePage products={products}/>
+      <Navbar isLogin={isLogin} setIsLogin={setIsLogin} cartState={cartState}/>
+      <HomePage products={products} dispatch={dispatch}/>
     </>
   )
 }

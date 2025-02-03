@@ -5,7 +5,7 @@ import { CartContext } from '../pages/cartContext/CartContext'
 import { Link } from 'react-router-dom'
 
 
-const Navbar = ({isLogin, setIsLogin}) => {
+const Navbar = ({isLogin, setIsLogin, cartState}) => {
 
   const {theme,toggleTheme} = useContext(ThemeContext)
   console.log(theme);
@@ -47,6 +47,9 @@ function handleLogout(){
     <button onClick={toggleTheme}>ChangeTheme</button>
     <Link to='/home-page/cart' >Cart
     <sup>{cartLength}</sup>
+    </Link>
+    <Link to='/home-page/cartReducer' >CartFromReducer
+    <sup>{cartState.cartLength}</sup>
     </Link>
 
     <form className="form-inline my-2 my-lg-0">

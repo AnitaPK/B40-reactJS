@@ -1,33 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import {ResponsiveContainer,BarChart,XAxis,YAxis,Tooltip,Legend, Bar } from 'recharts'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [TotalPopulation, setTotalPopulation] = useState()
+  const [TotalCountries, setTotalCountries] = useState()
+  const [TopTenPopulated, setTopTenPopulated] = useState([])
+
+useEffect(()=>{
+      axios.get('http://localhost:7000/TotalContries')
+      .then(res=>setTotalCountries(res.data.totalCountries))
+
+      axios.get('http://localhost:7000/TotalPopulation')
+      .then(res=>setTotalPopulation(res.data.totalPop))
+
+      axios.get('http://localhost:7000/Top-10-populated-countries')
+      .then(res=>setTopTenPopulated(res.data.topTen))
+})
+
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="container">
+        <div className="row">
+          <div className="col bg-success"> TotalPopulation : {TotalPopulation}</div>
+          <div className="col">Total Contries : {TotalCountries}</div>
+
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <hr></hr>
+<div className="container">
+      <ResponsiveContainer width="90%" height={250}>
+                        <BarChart data={TopTenPopulated}>
+                            <XAxis dataKey="Name" />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend />
+                            <Bar dataKey="Population" fill="#28a745" barSize={50} />
+                        </BarChart>
+      </ResponsiveContainer>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }

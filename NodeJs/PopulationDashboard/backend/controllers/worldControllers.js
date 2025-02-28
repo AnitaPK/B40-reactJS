@@ -36,8 +36,31 @@ function totalContries(req,res){
 }
 
 
+function top_ten_populated_countries(req,res){
+    try {
+        query2 = "SELECT Name, Population FROM country ORDER BY Population DESC LIMIT 10",
+        db.query(query2,(err, result)=>{
+            if(err) throw err;
+            res.status(200).send({mgs:"Success", topTen:result})
+        })
+    } catch (error) {
+        res.status(500).send({msg:"server Error"})
+    }
+}
+
+function least_ten_populated_countries(req,res){
+    try {
+        query2 = "SELECT Name, Population FROM country ORDER BY Population ASC LIMIT 10",
+        db.query(query2,(err, result)=>{
+            if(err) throw err;
+            res.status(200).send({mgs:"Success", leastTen:result})
+        })
+    } catch (error) {
+        res.status(500).send({msg:"server Error"})
+    }
+}
 
 
 
 
-module.exports = {totalPopulation,totalContries}
+module.exports = {totalPopulation,totalContries, top_ten_populated_countries, least_ten_populated_countries}

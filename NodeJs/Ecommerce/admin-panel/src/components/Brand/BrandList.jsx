@@ -34,7 +34,7 @@ const BrandList = () => {
         }
        
         fetchCategories();
-    }, []);
+    }, [setSelectedBrand]);
 
     const handleEditClick = (brand) => {
         setSelectedBrand(brand);
@@ -72,6 +72,7 @@ const BrandList = () => {
                 <thead>
                     <tr>
                         <th>Brand Name</th>
+                        <th>Image</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -79,6 +80,8 @@ const BrandList = () => {
                     {brand.map((brnd) => (
                         <tr key={brnd.brand_id}>
                             <td>{brnd.brand_name}</td>
+                            <td><img src={brnd.brand_image} alt="imag not shown" width="70" height="70"/></td>
+                            
                             <td>
                                 <Button variant="primary" onClick={() => handleEditClick(brnd)}>
                                     Edit

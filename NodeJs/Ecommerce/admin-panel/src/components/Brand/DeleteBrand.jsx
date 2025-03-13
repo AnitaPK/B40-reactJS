@@ -12,21 +12,21 @@ const DeleteBrand = ({
   const token = localStorage.getItem("token");
 
   const handleDelete = async () => {
-    console.log(brand);
+    // console.log(brand);
     setLoading(true);
     if (!token) {
       alert("User is not authenticated.");
     }
     try {
      await axios.delete(
-        `http://localhost:5000/api/brand/deleteBrand/${brand._id}`,
+        `http://localhost:7000/brand/deleteBrand/${brand.brand_id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-      handleBrandDelete(brand._id);
+      handleBrandDelete(brand.brand_id);
     } catch (error) {
       console.error("Error deleting category:", error);
     } finally {

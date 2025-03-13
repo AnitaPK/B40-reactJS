@@ -8,7 +8,7 @@ const EditBrand = ({
   brand,
   handleBrandUpdate,
 }) => {
-  const [brandName, setBrandName] = useState(brand.brandName);
+  const [brand_name, setBrandName] = useState(brand.brand_name);
   const [loading, setLoading] = useState(false);
   const token = localStorage.getItem("token");
 
@@ -21,18 +21,20 @@ const EditBrand = ({
     e.preventDefault();
     setLoading(true);
     try {
-        // console.log(brandName);
+        // console.log(brand_name);
         // console.log(token);
       const response = await axios.put(
-        `http://localhost:5000/api/brand/updateBrand/${brand._id}`,
-        { brandName },
+        `http://localhost:7000/brand/updateBrand/${brand.brand_id}`,
+        { brand_name },
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-      handleBrandUpdate(response.data);
+      
+      // console.log(response.data)
+      handleBrandUpdate(brand.brand_id);
     } catch (error) {
       console.error("Error updating category:", error);
     } finally {
@@ -51,7 +53,7 @@ const EditBrand = ({
             <Form.Label>Brand Name</Form.Label>
             <Form.Control
               type="text"
-              value={brand.name}
+              value={brand.brand_name}
               onChange={(e) => setBrandName(e.target.value)}
               required
             />

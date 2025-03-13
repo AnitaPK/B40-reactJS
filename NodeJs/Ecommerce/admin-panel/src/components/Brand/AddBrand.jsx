@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const AddBrand = () => {
-  const [name, setName] = useState('');
-  const [image, setImage] = useState(null);
+  const [brand_name, setName] = useState('');
+  const [brand_image, setImage] = useState(null);
 
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
@@ -19,8 +19,8 @@ const AddBrand = () => {
 
     try {
       await axios.post(
-        'http://localhost:5000/api/brand/createBrand',
-        { name, image },
+        'http://localhost:7000/brand/addBrand',
+        { brand_name, brand_image },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -54,7 +54,7 @@ const AddBrand = () => {
             type="text"
             className="form-control"
             id="brandName"
-            value={name}
+            value={brand_name}
             onChange={(e) => setName(e.target.value)}
             required
           />

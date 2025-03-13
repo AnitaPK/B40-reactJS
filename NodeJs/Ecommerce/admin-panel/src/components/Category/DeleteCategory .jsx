@@ -19,14 +19,14 @@ const DeleteCategory = ({
     }
     try {
      await axios.delete(
-        `http://localhost:5000/api/categories/deleteCategory/${category._id}`,
+        `http://localhost:7000/category/deleteCategory/${category.category_id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-      handleCategoryDelete(category._id);
+      handleCategoryDelete(category.category_id);
     } catch (error) {
       console.error("Error deleting category:", error);
     } finally {

@@ -71,6 +71,7 @@ const CategoryList = () => {
                 <thead>
                     <tr>
                         <th>Category Name</th>
+                        <th>Image</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -78,6 +79,7 @@ const CategoryList = () => {
                     {categories.map((category) => (
                         <tr key={category.category_id}>
                             <td>{category.category_name}</td>
+                            <td><img src={category.category_image} alt="imag not shown" width="100" height="100"/></td>
                             <td>
                                 <Button variant="primary" onClick={() => handleEditClick(category)}>
                                     Edit

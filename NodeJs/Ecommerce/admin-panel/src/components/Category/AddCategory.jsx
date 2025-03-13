@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const AddCategory = () => {
-  const [name, setName] = useState('');
-  const [image, setImage] = useState(null);
+  const [category_name, setName] = useState('');
+  const [category_image, setImage] = useState(null);
 
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
@@ -19,8 +19,8 @@ const AddCategory = () => {
 
     try {
       await axios.post(
-        'http://localhost:5000/api/categories/createCategory',
-        { name, image },
+        'http://localhost:7000/category/addCategory',
+        { category_name, category_image },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -54,7 +54,7 @@ const AddCategory = () => {
             type="text"
             className="form-control"
             id="categoryName"
-            value={name}
+            value={category_name}
             onChange={(e) => setName(e.target.value)}
             required
           />

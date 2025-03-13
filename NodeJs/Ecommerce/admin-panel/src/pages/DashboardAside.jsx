@@ -18,27 +18,27 @@ const DashboardAside = () => {
       <div className="sidebar">
           <ul className="nav">
             <li>
-              <Link to="products">Products</Link>
+              <Link to="/dashboard/products">Products</Link>
             </li>
             <hr></hr>
             <li>
-              <Link to="addProduct">Add Product</Link>
+              <Link to="/dashboard/addProduct">Add Product</Link>
             </li>
             <hr></hr>
             <li>
-              <Link to="category">Category</Link>
+              <Link to="/dashboard/category">Category</Link>
             </li>
             <hr></hr>
             <li>
-              <Link to="addCategory">AddCategory</Link>
+              <Link to="/dashboard/addCategory">AddCategory</Link>
             </li>
             <hr></hr>
             <li>
-              <Link to="brand">Brand</Link>
+              <Link to="/dashboard/brand">Brand</Link>
             </li>
             <hr></hr>
             <li>
-              <Link to="addBrand">AddBrand</Link>
+              <Link to="/dashboard/addBrand">AddBrand</Link>
             </li>
    
           </ul>
